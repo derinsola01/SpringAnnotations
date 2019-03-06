@@ -9,13 +9,14 @@ public class AnnotationDemoApp {
 		// read spring config file specified bean id
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
-		// specified bean id
-//		Coach theCoach = context.getBean("thatSillyCoach", Coach.class);
-		
 		// default bean id
 		Coach theCoach = context.getBean("tennisCoach", Coach.class);
 		
+		// explicit bean id
+		Coach footieCoach = context.getBean("footballerLomo", Coach.class);
+		
 		System.out.println(theCoach.getDailyWorkOut());
+		System.out.println(footieCoach.getDailyWorkOut());
 		
 		context.close();
 
