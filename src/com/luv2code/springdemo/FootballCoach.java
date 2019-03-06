@@ -12,4 +12,12 @@ public class FootballCoach implements Coach {
 		return "Take 1000 penalty kicks today.";
 	}
 
+	@Override
+	public String getDailyFortune() {
+		return null;
+	}
+
+	
+	
+
 }
