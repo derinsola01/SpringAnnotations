@@ -8,11 +8,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class TennisCoach implements Coach {
 	
+	@Autowired
 	private FortuneService fortuneService;
 	
-	@Autowired
-	public TennisCoach(FortuneService theFortuneService) {
-		fortuneService = theFortuneService;
+//	@Autowired
+//	public TennisCoach(FortuneService theFortuneService) {
+//		fortuneService = theFortuneService;
+//	}
+	
+	public TennisCoach() {
+		System.out.println("Inside default constructor");
 	}
 
 	@Override
@@ -24,5 +29,17 @@ public class TennisCoach implements Coach {
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
 	}
+	
+//	@Autowired
+//	public void setFortuneService(FortuneService theFortuneService) {
+//		System.out.println("Inside setFortuneService Setter");
+//		fortuneService = theFortuneService;
+//	}
+	
+//	@Autowired
+//	public void doSomeCrazyShit(FortuneService theFortuneService) {
+//		System.out.println("Inside doSomeCrazyShit Method");
+//		fortuneService = theFortuneService;
+//	}
 
 }
