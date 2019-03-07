@@ -1,10 +1,13 @@
 package com.luv2code.springdemo;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AnnotationDemoApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
 		// read spring config file specified bean id
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");

@@ -1,5 +1,8 @@
 package com.luv2code.springdemo;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -10,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class TennisCoach implements Coach {
 	
 	@Autowired
-	@Qualifier("randomFortuneService")
+	@Qualifier("textFileFortuneService")
 	private FortuneService fortuneService;
 	
 //	@Autowired
@@ -28,7 +31,7 @@ public class TennisCoach implements Coach {
 	}
 
 	@Override
-	public String getDailyFortune() {
+	public String getDailyFortune() throws FileNotFoundException, IOException {
 		return fortuneService.getFortune();
 	}
 	
