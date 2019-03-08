@@ -5,11 +5,13 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 // Uses default bean id implementation
 
 @Component
+@Scope("prototype")
 public class TennisCoach implements Coach {
 	
 	@Autowired
