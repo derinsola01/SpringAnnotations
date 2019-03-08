@@ -3,15 +3,16 @@ package com.luv2code.springdemo;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 // Uses default bean id implementation
 
 @Component
-@Scope("prototype")
 public class TennisCoach implements Coach {
 	
 	@Autowired
@@ -25,6 +26,19 @@ public class TennisCoach implements Coach {
 	
 	public TennisCoach() {
 		System.out.println("Inside default constructor");
+	}
+	
+	// define init method
+	@PostConstruct
+	public void doMyStartupStuff() {
+		System.out.println("TennisCoach: inside the doMyStartupStuff method");
+	}
+	
+	
+	// define destroy method
+	@PreDestroy
+	public void doMyCleanupStuff() {
+		System.out.println("TennisCoach: inside the doMyCleanupStuff method");
 	}
 
 	@Override

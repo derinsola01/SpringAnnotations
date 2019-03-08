@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,9 +18,14 @@ public class TextFileFortuneService implements FortuneService {
 	@Override
 	public String getFortune() throws IOException{
 		ArrayList<String> fortuneList = readTextFile(); //new ArrayList<String>();
+		
+		return getRandomFortune(fortuneList);
+	}
+	
+	public String getRandomFortune( ArrayList<String> fortuneArray ) {
 		Random randomInteger = new Random();
-		int randomIndex = randomInteger.nextInt(fortuneList.size());
-		return fortuneList.get(randomIndex);
+		int randomIndex = randomInteger.nextInt(fortuneArray.size());
+		return fortuneArray.get(randomIndex);
 	}
 	
 	public ArrayList<String> readTextFile () throws IOException{
@@ -28,6 +36,18 @@ public class TextFileFortuneService implements FortuneService {
 			arrayLoader.add(bufferedReader.readLine());
 		bufferedReader.close();
 		return arrayLoader;
+	}
+	
+	@PostConstruct
+	public void doInitStuff() throws IOException {
+		System.out.println("Inside the doInitStuff method");
+		System.out.println("Print Random Fortune: " + getFortune());
+		System.out.println("Last line inside the doInitStuff method");
+	}
+	
+	@PreDestroy
+	public void doDestroyStuff() {
+		System.out.println("Inside the doDestroyStuff method");
 	}
 
 }
